@@ -1,9 +1,11 @@
 #pragma once
 
 #include "Platform/Core/RootObject.h"
+
 namespace nn::nex {
 
 class InstanceControl;
+
 class InstantiationContext : public RootObject {
 public:
     InstantiationContext();

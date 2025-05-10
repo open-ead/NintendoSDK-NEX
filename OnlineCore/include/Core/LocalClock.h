@@ -9,6 +9,7 @@ public:
     static LocalClock* s_pInstance;
 
     LocalClock() { m_Time = Time::GetTime(); }
+
     virtual ~LocalClock();
 
     static void DeleteInstance();
