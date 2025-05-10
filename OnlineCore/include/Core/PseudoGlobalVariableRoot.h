@@ -1,18 +1,11 @@
-/**
- * @file psuedo.h
- * @brief Psuedo variable implementation for NEX.
- */
-
 #pragma once
 
-#include <nn/nex/instance.h>
 #include "Platform/Core/RootObject.h"
 
-namespace nn {
-namespace nex {
+namespace nn::nex {
 class PseudoGlobalVariableList;
 
-class PseudoGlobalVariableRoot : public nn::nex::RootObject {
+class PseudoGlobalVariableRoot : public RootObject {
 public:
     PseudoGlobalVariableRoot();
 
@@ -29,11 +22,10 @@ public:
     static void FreeExtraContextsForAllVariables();
     static s64 GetNbOfExtraContexts();
 
-    nn::nex::PseudoGlobalVariableRoot* mNextRoot;  // _8
+    PseudoGlobalVariableRoot* mNextRoot;
 
     static s64 s_uiNbOfExtraContexts;
     static PseudoGlobalVariableList s_oList;
 };
 
-}  // namespace nex
-}  // namespace nn
+}  // namespace nn::nex

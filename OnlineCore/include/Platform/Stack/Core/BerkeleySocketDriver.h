@@ -1,12 +1,10 @@
 #pragma once
 
-#include <nn/nex/socket.h>
-#include <nn/types.h>
+#include "Platform/Stack/Core/SocketDriver.h"
 
 namespace nn::nex {
 
-class BerkeleySocketDriver
-    : SocketDriver {  // inherits SocketDriver and RootObject but not documented
+class BerkeleySocketDriver : SocketDriver {
 public:
     class BerkeleySocket : public SocketDriver::Socket {
     public:
@@ -23,7 +21,7 @@ public:
         s32 RecvFrom(u8*, ulong, SocketDriver::InetAddress*, u64*, SocketDriver::_SocketFlag);
     };
 
-    ~BerkeleySocketDriver() override;
+    virtual ~BerkeleySocketDriver();
 };
 
 }  // namespace nn::nex

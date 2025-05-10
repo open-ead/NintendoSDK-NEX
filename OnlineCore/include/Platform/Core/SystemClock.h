@@ -5,6 +5,7 @@
 namespace nn::nex {
 class TimeProvider;
 class Time;
+
 class SystemClock {
 public:
     SystemClock();
@@ -17,7 +18,7 @@ public:
     static Time GetTimeImplCorrectless();
     static void Reset();
 
-    static nn::nex::TimeProvider* s_pTimeProvider;
+    static TimeProvider* s_pTimeProvider;
     static Time s_cachedTime;
     static bool s_needCorrection;
     static bool s_tiCorrection;

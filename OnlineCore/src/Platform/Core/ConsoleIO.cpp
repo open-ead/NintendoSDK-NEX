@@ -3,22 +3,22 @@
 #include <cstdio>
 #include "Platform/Core/VersionInfo.h"
 
-namespace nn::nex::ConsoleIO {
-bool InputIsSupported() {
+namespace nn::nex {
+bool ConsoleIO::InputIsSupported() {
     return false;
 }
 
-bool OutputIsSupported() {
+bool ConsoleIO::OutputIsSupported() {
     return true;
 }
 
-u8 GetChar(bool unk) {
+u8 ConsoleIO::GetChar(bool unk) {
     return 0;
 }
 
-void GetCStr(char* ret, u32 unk) {}
+void ConsoleIO::GetCStr(char* ret, u32 unk) {}
 
-void Print(const char* format, ...) {
+void ConsoleIO::Print(const char* format, ...) {
     va_list args;
     va_start(args, format);
 
@@ -29,17 +29,17 @@ void Print(const char* format, ...) {
     printf("%s", buffer);
 }
 
-void PutString(const char* str) {
+void ConsoleIO::PutString(const char* str) {
     printf("%s", str);
 }
 
-void Banner(const char* str) {
+void ConsoleIO::Banner(const char* str) {
     Print("%s, version %d.%d.%d.%d\n", str, VersionInfo::V1(), VersionInfo::V2(), VersionInfo::V3(),
           VersionInfo::V4());
     Print("%s\n", VersionInfo::GetCopyrightString());
     Print("\n");
 }
 
-void Error() {}
+void ConsoleIO::Error() {}
 
-}  // namespace nn::nex::ConsoleIO
+}  // namespace nn::nex

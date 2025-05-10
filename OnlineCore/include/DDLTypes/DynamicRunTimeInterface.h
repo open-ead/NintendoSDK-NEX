@@ -1,15 +1,9 @@
-/**
- * @file dynamic.h
- * @brief NEX Dyamnic Runtime.
- */
-
 #pragma once
 
 #include "Platform/Core/RootObject.h"
 
-namespace nn {
-namespace nex {
-class DynamicRunTimeInterface : public nn::nex::RootObject {
+namespace nn::nex {
+class DynamicRunTimeInterface : public RootObject {
 public:
     DynamicRunTimeInterface();
 
@@ -17,5 +11,4 @@ public:
 
     u64* GetInstance();
 };
-}  // namespace nex
-}  // namespace nn
+}  // namespace nn::nex

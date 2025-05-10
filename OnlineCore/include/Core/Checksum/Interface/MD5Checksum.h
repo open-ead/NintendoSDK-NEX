@@ -2,20 +2,18 @@
 
 #include "Core/Checksum/Interface/ChecksumAlgorithm.h"
 
-namespace nn {
-namespace nex {
+namespace nn::nex {
 class Buffer;
 
-class MD5Checksum : public nn::nex::ChecksumAlgorithm {
+class MD5Checksum : public ChecksumAlgorithm {
 public:
     MD5Checksum();
 
     virtual ~MD5Checksum();
 
-    virtual bool ComputeChecksum(nn::nex::Buffer const&, nn::nex::Buffer*);
-    virtual u32 ComputeChecksumForTransportArray(u8 const**, u64 const*, u64);
+    virtual bool ComputeChecksum(const Buffer&, Buffer*);
+    virtual u32 ComputeChecksumForTransportArray(const u8**, const u64*, u64);
     virtual u32 GetChecksumLength();
 };
 
-}  // namespace nex
-}  // namespace nn
+}  // namespace nn::nex

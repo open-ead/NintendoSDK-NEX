@@ -1,31 +1,25 @@
-/**
- * @file encryption.h
- * @brief NEX Encryption Algorithm.
- */
-
 #pragma once
 
 #include "Platform/Core/RootObject.h"
 
-namespace nn {
-namespace nex {
+namespace nn::nex {
 class Buffer;
 class Key;
 
-class EncryptionAlgorithm : public nn::nex::RootObject {
+class EncryptionAlgorithm : public RootObject {
 public:
     EncryptionAlgorithm(u32, u32);
 
     virtual ~EncryptionAlgorithm();
 
-    virtual bool Encrypt(nn::nex::Buffer const&, nn::nex::Buffer*) = 0;
-    virtual bool Encrypt(nn::nex::Buffer*);
-    virtual bool Decrypt(nn::nex::Buffer const&, nn::nex::Buffer*) = 0;
-    virtual bool Decrypt(nn::nex::Buffer*);
+    virtual bool Encrypt(const Buffer&, Buffer*) = 0;
+    virtual bool Encrypt(Buffer*);
+    virtual bool Decrypt(const Buffer&, Buffer*) = 0;
+    virtual bool Decrypt(Buffer*);
     virtual bool GetErrorString(u32, char* destStr, u64 errLen);
     virtual void KeyHasChanged();
 
-    bool SetKey(nn::nex::Key const& key);
+    bool SetKey(const Key& key);
 
     u64 _8;
     u64 _10;
@@ -37,5 +31,4 @@ public:
     u64 _40;
 };
 
-}  // namespace nex
-}  // namespace nn
+}  // namespace nn::nex

@@ -1,11 +1,10 @@
 #pragma once
 
-#include <arpa/inet.h>  //FIXME requires proper musl-setup
+#include <arpa/inet.h>
 #include <sys/socket.h>
-#include "RootObject.h"
+#include "Platform/Core/RootObject.h"
 
-namespace nn {
-namespace nex {
+namespace nn::nex {
 class TransportProtocol {
 public:
     enum Type {
@@ -18,7 +17,7 @@ public:
     };
 };
 
-class SocketDriver : nn::nex::RootObject {
+class SocketDriver : RootObject {
 public:
     typedef in_addr_t InetAddress;
 
@@ -42,11 +41,11 @@ public:
     };
 
     class Socket {
-        virtual bool Open(nn::nex::TransportProtocol::Type);
+        virtual bool Open(TransportProtocol::Type);
         virtual void Close();
         virtual bool Bind(u16&);
-        virtual s32 RecvFrom(u8*, ulong, InetAddress*, ulong*, nn::nex::SocketDriver::_SocketFlag);
-        virtual s32 SendTo(u8 const*, ulong, nn::nex::SocketDriver::InetAddress const&, ulong*);
+        virtual s32 RecvFrom(u8*, ulong, InetAddress*, ulong*, SocketDriver::_SocketFlag);
+        virtual s32 SendTo(u8 const*, ulong, SocketDriver::InetAddress const&, ulong*);
     };
 
     class PollInfo {};
@@ -65,5 +64,4 @@ class ClientWebSocketDriver : SocketDriver {
 
     ~ClientWebSocketDriver() override;
 };
-}  // namespace nex
-}  // namespace nn
+}  // namespace nn::nex

@@ -1,9 +1,10 @@
 #pragma once
 
 #include <nn/mem.h>
+#include "Platform/Core/RefCountedObject.h"
 
 namespace nn::nex {
-class GlobalVariables {
+class GlobalVariables : public RefCountedObject {
 public:
     static GlobalVariables* s_pGv;
 

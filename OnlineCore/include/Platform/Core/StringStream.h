@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Platform/Core/RootObject.h"
+
 namespace nn::nex {
 class StringStream : public RootObject {
 public:
@@ -18,7 +19,7 @@ public:
     void StreamNumber(u32);
     void StreamNumber(s32);
     StringStream& operator<<(const char*);
-    StringStream& operator<<(const nn::nex::StringStream&);
+    StringStream& operator<<(const StringStream&);
     StringStream& operator<<(bool);
     StringStream& operator<<(double);
     StringStream& operator<<(float);

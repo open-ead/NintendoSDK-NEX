@@ -1,15 +1,13 @@
 #pragma once
 
-#include "common/NintendoAuthenticationDDLDeclarations.h"
+#include "DDLTypes/DDLDeclarations.h"
 
-namespace nn {
-namespace nex {
-class NintendoAuthenticationDDLDeclarations : public nn::nex::DDLDeclarations {
+namespace nn::nex {
+class NintendoAuthenticationDDLDeclarations : public DDLDeclarations {
 public:
     virtual ~NintendoAuthenticationDDLDeclarations();
     virtual void Init();
 
     void Register();
 };
-}  // namespace nex
-}  // namespace nn
+}  // namespace nn::nex

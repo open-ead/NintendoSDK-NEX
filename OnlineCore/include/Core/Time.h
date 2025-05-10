@@ -1,14 +1,8 @@
-/**
- * @file time.h
- * @brief NEX Time Library.
- */
-
 #pragma once
 
 #include <nn/types.h>
 
-namespace nn {
-namespace nex {
+namespace nn::nex {
 class TimeProvider;
 
 class Time {
@@ -23,10 +17,9 @@ public:
     static Time ConvertTimeoutToDeadline(u32 timeout);
     static u32 ConvertDeadlineToTimeout(Time deadline);
 
-    u64 mCurTime;  // _0
+    u64 mCurTime;
 
     static u64* s_pfGetSessionTime;  // some sort of callback?
 };
 
-}  // namespace nex
-}  // namespace nn
+}  // namespace nn::nex

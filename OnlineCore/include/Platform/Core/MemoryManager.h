@@ -1,9 +1,12 @@
 #pragma once
 
-#include <nn/types.h>
+#include "Platform/Core/RootObject.h"
 
 namespace nn::nex {
-class MemoryManager {
+class MutexPrimitive;
+class WaterMark;
+
+class MemoryManager : public RootObject {
 public:
     enum _InstructionType : u32 {};
 
@@ -14,7 +17,7 @@ public:
     static fcnFree s_fcnFree;
     static void* s_eShutDownState;
 
-    MemoryManager(const char* watermark);
+    MemoryManager(const char* watermarkName);
 
     virtual ~MemoryManager();
     virtual void BeginProtection();
@@ -34,9 +37,9 @@ public:
     const char* GetInstructionTypeString(_InstructionType) const;
 
 private:
-    int dword_8 = 0;
-    const char* field_10 = nullptr;
-    const char* field_18 = nullptr;
+    int dword_8;
+    WaterMark* m_pMemoryWaterMark;
+    MutexPrimitive* m_pMutex;
 };
 }  // namespace nn::nex
 

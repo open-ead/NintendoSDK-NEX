@@ -1,15 +1,9 @@
-/**
- * @file ddl.h
- * @brief DDL Declaration Implementation.
- */
-
 #pragma once
 
 #include "Platform/Core/RootObject.h"
 
-namespace nn {
-namespace nex {
-class DDLDeclarations : public nn::nex::RootObject {
+namespace nn::nex {
+class DDLDeclarations : public RootObject {
 public:
     DDLDeclarations(bool);
 
@@ -26,15 +20,11 @@ public:
     void Unload();
     void ResetDOClassIDs();
 
-    u32 mNumDecsLoaded;  // _8
+    u32 mNumDecsLoaded;
     u8 DDLDeclarations_xC;
-    u8 _D;  // padding
-    u8 _E;  // ^^
-    u8 _F;  // ^^
     u64 _10;
     bool _18;
 
-    static nn::nex::DDLDeclarations* s_pFirstDDLDecl;
+    static DDLDeclarations* s_pFirstDDLDecl;
 };
-}  // namespace nex
-}  // namespace nn
+}  // namespace nn::nex

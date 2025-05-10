@@ -1,17 +1,11 @@
-/**
- * @file system.h
- * @brief System state / component interface for NEX.
- */
-
 #pragma once
 
-#include <nn/nex/reference.h>
+#include "Platform/Core/RefCountedObject.h"
 
-namespace nn {
-namespace nex {
+namespace nn::nex {
 class String;
 
-class SystemComponent : public nn::nex::RefCountedObject {
+class SystemComponent : public RefCountedObject {
 public:
     enum _State {
         State_Uninitialized = 1 << 0,
@@ -26,27 +20,27 @@ public:
         State_HighestState = 1 << 8
     };
 
-    SystemComponent(nn::nex::String const&);
+    SystemComponent(String const&);
 
     virtual ~SystemComponent();
 
     virtual char* GetType() const;
     virtual bool IsAKindOf(char const*) const;
     virtual void EnforceDeclareSysComponentMacro() = 0;
-    virtual void StateTransition(nn::nex::SystemComponent::_State);
+    virtual void StateTransition(SystemComponent::_State);
     virtual void OnInitialize();
     virtual void OnTerminate();
     virtual bool BeginInitialization();
     virtual bool EndInitialization();
     virtual bool BeginTermination();
     virtual bool EndTermination();
-    virtual bool ValidTransition(nn::nex::SystemComponent::_State);
+    virtual bool ValidTransition(SystemComponent::_State);
     virtual bool UseIsAllowed();
-    virtual nn::nex::SystemComponent::_State TestState();
+    virtual SystemComponent::_State TestState();
     virtual void DoWork();
 
-    nn::nex::SystemComponent::_State Initialize();
-    nn::nex::SystemComponent::_State Terminate();
+    SystemComponent::_State Initialize();
+    SystemComponent::_State Terminate();
 
     u8 SystemComponent_xC;
     u8 _D;
@@ -58,9 +52,8 @@ public:
     u32 _28;
     u32 _2C;
     u64 _30;
-    nn::nex::SystemComponent::_State mState;  // _38
+    SystemComponent::_State mState;  // _38
     u32 _3C;
     u64 _40;
 };
-}  // namespace nex
-}  // namespace nn
+}  // namespace nn::nex

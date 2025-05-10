@@ -20,10 +20,10 @@ public:
     void operator=(const bool&);
     void operator=(const u32&);
     void operator=(const s32&);
-    void operator=(const nn::nex::qResult&);
+    void operator=(const qResult&);
     void GetNnResult() const;
     void GetErrorCodeStruct() const;
-    void Format(nn::nex::String*) const;
+    void Format(String*) const;
     const char* GetReturnCodeString() const;
     void GetErrorName() const;
     void IsError() const;

@@ -18,7 +18,7 @@ public:
     void FreeExtraContexts();
     void GetHighestID();
     void ContextIsValid(u32);
-    void FindInstanceContext(nn::nex::InstanceControl*, u32);
+    void FindInstanceContext(InstanceControl*, u32);
 
 private:
     u32 mInstanceContext;

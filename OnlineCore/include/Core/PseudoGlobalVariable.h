@@ -1,17 +1,10 @@
-/**
- * @file psuedo.h
- * @brief Psuedo variable implementation for NEX.
- */
-
 #pragma once
 
-#include <nn/nex/instance.h>
-#include "Platform/Core/RootObject.h"
+#include "Core/PseudoGlobalVariableRoot.h"
 
-namespace nn {
-namespace nex {
+namespace nn::nex {
 template <typename T>
-class PseudoGlobalVariable : public nn::nex::PseudoGlobalVariableRoot {
+class PseudoGlobalVariable : public PseudoGlobalVariableRoot {
 public:
     PseudoGlobalVariable();
 
@@ -23,5 +16,4 @@ public:
     virtual PseudoGlobalVariableRoot* GetNext();
     virtual void SetNext(PseudoGlobalVariableRoot* pNextVariable);
 };
-}  // namespace nex
-}  // namespace nn
+}  // namespace nn::nex
