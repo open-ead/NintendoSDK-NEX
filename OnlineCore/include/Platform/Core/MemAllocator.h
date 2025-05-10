@@ -13,15 +13,15 @@ public:
 
     MemAllocator() {}
 
-    MemAllocator(const nn::nex::MemAllocator<T>&) {}
+    MemAllocator(const MemAllocator<T>&) {}
 
     T* address(T& val) const { return val; }
 
     const T* address(const T& val) const { return val; }
 
-    bool operator==(const nn::nex::MemAllocator<T>&) const { return true; }
+    bool operator==(const MemAllocator<T>&) const { return true; }
 
-    bool operator!=(const nn::nex::MemAllocator<T>&) const { return false; }
+    bool operator!=(const MemAllocator<T>&) const { return false; }
 
     T* allocate(u64 size, const void*) { return MemoryManager::Allocate(size); }
 

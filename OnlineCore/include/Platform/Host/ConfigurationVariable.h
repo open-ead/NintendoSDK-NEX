@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Platform/Core/RootObject.h"
-
 namespace nn::nex {
 class String;
 

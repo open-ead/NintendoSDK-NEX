@@ -17,7 +17,7 @@ public:
     static void operator delete[](void*);
     static void operator delete(void*, const char*, unsigned int);
     static void operator delete[](void*, const char*, unsigned int);
-    static void* operator new(ulong, nn::nex::RootObject::TargetPool);
-    static void* operator new(ulong, nn::nex::RootObject::TargetPool, const char*, unsigned int);
+    static void* operator new(ulong, RootObject::TargetPool);
+    static void* operator new(ulong, RootObject::TargetPool, const char*, unsigned int);
 };
 }  // namespace nn::nex

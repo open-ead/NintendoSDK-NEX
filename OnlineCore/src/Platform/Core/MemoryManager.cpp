@@ -2,14 +2,14 @@
 #include <cstdlib>
 #include "Platform/Core/GlobalVariables.h"
 #include "Platform/Core/MutexPrimitive.h"
+#include "Platform/Core/WaterMark.h"
 #include "nn/mem.h"
 
 namespace nn::nex {
-MemoryManager::MemoryManager(const char* watermark) {
-    if (!s_fcnMalloc)
-        MutexPrimitive* prim = new MutexPrimitive(true);
-
-    // field_10 =
+MemoryManager::MemoryManager(const char* watermarkName)
+    : dword_8(0), m_pMemoryWaterMark(nullptr), m_pMutex(nullptr) {
+    m_pMutex = new MutexPrimitive(true);
+    m_pMemoryWaterMark = new WaterMark(watermarkName, true, 60000);
     s_eShutDownState = 0;
 }
 

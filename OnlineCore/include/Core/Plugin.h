@@ -1,6 +1,5 @@
 #pragma once
 
-#include <nn/types.h>
 #include "Platform/Core/RootObject.h"
 
 namespace nn::nex {

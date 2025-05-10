@@ -1,5 +1,4 @@
 #include "Platform/Core/RootObject.h"
-#include <cstdlib>
 #include "Platform/Core/MemoryManager.h"
 
 namespace nn::nex {
@@ -36,8 +35,8 @@ void RootObject::operator delete[](void* ptr, const char*, u32) {
     MemoryManager::Free(ptr);
 }
 
-void* RootObject::operator new(ulong, nn::nex::RootObject::TargetPool) {}
+void* RootObject::operator new(ulong, RootObject::TargetPool) {}
 
-void* RootObject::operator new(ulong, nn::nex::RootObject::TargetPool, const char*, u32) {}
+void* RootObject::operator new(ulong, RootObject::TargetPool, const char*, u32) {}
 
 }  // namespace nn::nex

@@ -14,24 +14,24 @@ public:
     class NoAllocTag;
 
     String();
-    String(nn::nex::String::NoAllocTag);
+    String(String::NoAllocTag);
     String(const char*);
     String(const wchar_t*);
     String(const char16*);
-    String(const nn::nex::String&);
+    String(const String&);
     virtual ~String();
 
     void Format(const char*, ...);
     void CreateCopy(char**) const;
     void ReleaseCopy(char*);
 
-    void operator=(const nn::nex::String&);
+    void operator=(const String&);
     void operator=(const char*);
     void operator=(wchar_t const*);
     void operator=(char16_t const*);
     void IsEqual(const char*, const char*);
-    void operator<(const nn::nex::String&) const;
-    void operator+=(const nn::nex::String&);
+    void operator<(const String&) const;
+    void operator+=(const String&);
 
     void Truncate(u64) const;
     void GetLength() const;
@@ -52,10 +52,10 @@ public:
     void FindSubstringNoCase(const char*) const;
     void ByteArrayToBase64(unsigned const char*, u64, char*, u64);
     void Base64ToByteArray(const char*, u64, u8*, u64);
-    void Base64ToByteArray(const nn::nex::String&, u8*, u64);
-    void ContainsCase(const nn::nex::String&) const;
+    void Base64ToByteArray(const String&, u8*, u64);
+    void ContainsCase(const String&) const;
     void ToUInt64() const;
-    void ContainsNoCase(const nn::nex::String&) const;
+    void ContainsNoCase(const String&) const;
     void SetDefaultStringEncoding(u32);
     void Trace(u64);
 

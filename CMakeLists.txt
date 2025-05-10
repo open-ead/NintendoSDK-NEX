@@ -18,6 +18,7 @@ target_include_directories(NintendoSDK-NEX PUBLIC
   ../NintendoSDK/include
   OnlineCore/include
   RendezVous/include
+  RendezVous/Core/include
 )
 
 target_compile_options(NintendoSDK-NEX PRIVATE -fno-strict-aliasing)

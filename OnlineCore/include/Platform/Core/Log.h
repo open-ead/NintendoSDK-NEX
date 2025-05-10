@@ -8,7 +8,6 @@ namespace nn::nex {
 class OutputFormat;
 class LogDevice;
 class LogFilter;
-
 class Log : public RootObject {
 public:
     Log();
