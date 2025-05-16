@@ -6,8 +6,9 @@ namespace nn::nex {
 
 class RefCountedObject : public RootObject {
 public:
-    RefCountedObject(){};
-    virtual ~RefCountedObject();
+    RefCountedObject() {}
+
+    virtual ~RefCountedObject() {}
 
 private:
     u16 field_8;

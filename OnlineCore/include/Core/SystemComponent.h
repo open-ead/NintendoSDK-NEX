@@ -20,12 +20,12 @@ public:
         State_HighestState = 1 << 8
     };
 
-    SystemComponent(String const&);
+    SystemComponent(const String&);
 
     virtual ~SystemComponent();
 
     virtual char* GetType() const;
-    virtual bool IsAKindOf(char const*) const;
+    virtual bool IsAKindOf(const char*) const;
     virtual void EnforceDeclareSysComponentMacro() = 0;
     virtual void StateTransition(SystemComponent::_State);
     virtual void OnInitialize();
@@ -39,8 +39,8 @@ public:
     virtual SystemComponent::_State TestState();
     virtual void DoWork();
 
-    SystemComponent::_State Initialize();
-    SystemComponent::_State Terminate();
+    _State Initialize();
+    _State Terminate();
 
     u8 SystemComponent_xC;
     u8 _D;
@@ -52,7 +52,7 @@ public:
     u32 _28;
     u32 _2C;
     u64 _30;
-    SystemComponent::_State mState;  // _38
+    _State mState;  // _38
     u32 _3C;
     u64 _40;
 };

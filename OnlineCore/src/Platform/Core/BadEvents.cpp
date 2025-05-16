@@ -1,12 +1,15 @@
 #include "Platform/Core/BadEvents.h"
 
 #include <algorithm>
+#include "Platform/Core/RootObject.h"
 
 namespace nn::nex {
+// NON_MATCHING: Reset() isn't matching
 BadEvents::BadEvents() {
     Reset();
 }
 
+// NON_MATCHING
 void BadEvents::Reset() {
     std::fill(std::begin(field_0), std::end(field_0), 0);
     field_28 = 130;
@@ -18,8 +21,9 @@ void BadEvents::SetExpectedEvent(_ID id) {
     field_28 |= 1 << id;
 }
 
+// NON_MATCHING: Reset() isn't matching
 BadEvents* BadEvents::CreateInstance() {
-    BadEvents* instance = new BadEvents();
+    BadEvents* instance = new (RootObject::operator new(sizeof(BadEvents))) BadEvents();
     s_pInstance = instance;
     return instance;
 }
