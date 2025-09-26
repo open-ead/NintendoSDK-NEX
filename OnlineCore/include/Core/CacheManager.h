@@ -11,7 +11,7 @@ public:
     CacheManager();
     ~CacheManager();
 
-    BasicCache* GetCache(String const&);
+    BasicCache* GetCache(const String&);
 };
 
 }  // namespace nn::nex

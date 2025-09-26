@@ -45,7 +45,7 @@ public:
         virtual void Close();
         virtual bool Bind(u16&);
         virtual s32 RecvFrom(u8*, ulong, InetAddress*, ulong*, SocketDriver::_SocketFlag);
-        virtual s32 SendTo(u8 const*, ulong, SocketDriver::InetAddress const&, ulong*);
+        virtual s32 SendTo(const u8*, ulong, const SocketDriver::InetAddress&, ulong*);
     };
 
     class PollInfo {};

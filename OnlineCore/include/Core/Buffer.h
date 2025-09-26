@@ -20,7 +20,7 @@ public:
     void operator+(const Buffer&);
     void operator[](u64);
 
-    bool AppendData(void const*, u64, u64);
+    bool AppendData(const void*, u64, u64);
     bool CopyContent(void*, u64, u64) const;
     void SetDefaultBufferSize(u64);
     void GetDefaultBufferSize();

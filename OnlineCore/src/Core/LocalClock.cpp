@@ -2,7 +2,7 @@
 #include "Platform/Core/Time.h"
 
 namespace nn::nex {
-LocalClock::~LocalClock(){};
+LocalClock::~LocalClock() {};
 
 void LocalClock::DeleteInstance() {
     if (!s_pInstance)

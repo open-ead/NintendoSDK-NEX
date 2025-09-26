@@ -15,6 +15,7 @@ public:
     DateTime(const time::PosixTime&);
     DateTime& operator=(const DateTime&);
     DateTime(const time::CalendarTime&);
+
     DateTime(u64 time) { m_ulTime = time; }
 
     operator u64();

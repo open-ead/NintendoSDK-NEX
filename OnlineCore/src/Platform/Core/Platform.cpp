@@ -37,15 +37,15 @@ nn::os::Tick Platform::GetTick() {
     return nn::os::GetSystemTick();
 }
 
-void Platform::NetworkToHost(unsigned const char* network, u16* host) {
+void Platform::NetworkToHost(const unsigned char* network, u16* host) {
     *host = (network[0] << 8) + network[1];
 }
 
-void Platform::NetworkToHost(unsigned const char* network, u32* host) {
+void Platform::NetworkToHost(const unsigned char* network, u32* host) {
     *host = (network[0] << 24) + (network[1] << 16) + (network[2] << 8) + network[3];
 }
 
-void Platform::NetworkToHost(unsigned const char* network, u64* host) {
+void Platform::NetworkToHost(const unsigned char* network, u64* host) {
     *host = ((u64)network[0] << 56) + ((u64)network[1] << 48) + ((u64)network[2] << 40) +
                 ((u64)network[3] << 32) + ((u64)network[4] << 24) + (network[5] << 16) +
                 (network[6] << 8) |

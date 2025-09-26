@@ -12,9 +12,9 @@ public:
 
     virtual ~RC4Encryption();
 
-    virtual bool Encrypt(Buffer const&, Buffer*);
+    virtual bool Encrypt(const Buffer&, Buffer*);
     virtual bool Encrypt(Buffer*);
-    virtual bool Decrypt(Buffer const&, Buffer*);
+    virtual bool Decrypt(const Buffer&, Buffer*);
     virtual bool Decrypt(Buffer*);
 
     virtual void KeyHasChanged();

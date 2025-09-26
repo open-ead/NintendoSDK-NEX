@@ -27,8 +27,8 @@ public:
 
     void operator=(const String&);
     void operator=(const char*);
-    void operator=(wchar_t const*);
-    void operator=(char16_t const*);
+    void operator=(const wchar_t*);
+    void operator=(const char16_t*);
     void IsEqual(const char*, const char*);
     void operator<(const String&) const;
     void operator+=(const String&);
@@ -50,7 +50,7 @@ public:
     void ToLower();
     void FindSubstringCase(const char*, s32) const;
     void FindSubstringNoCase(const char*) const;
-    void ByteArrayToBase64(unsigned const char*, u64, char*, u64);
+    void ByteArrayToBase64(const unsigned char*, u64, char*, u64);
     void Base64ToByteArray(const char*, u64, u8*, u64);
     void Base64ToByteArray(const String&, u8*, u64);
     void ContainsCase(const String&) const;

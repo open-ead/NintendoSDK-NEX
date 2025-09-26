@@ -23,7 +23,7 @@ public:
     StringStream& operator<<(bool);
     StringStream& operator<<(double);
     StringStream& operator<<(float);
-    StringStream& operator<<(void const*);
+    StringStream& operator<<(const void*);
     StringStream& operator<<(u64);
     StringStream& operator<<(long);
     void BytesDump(const unsigned char*, u64);

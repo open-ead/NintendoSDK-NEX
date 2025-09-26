@@ -5,9 +5,8 @@
 namespace nn::nex {
 UtilitySubsystem::UtilitySubsystem() {
     Platform::CreateInstance();
-    if (!LocalClock::s_pInstance) {
+    if (!LocalClock::s_pInstance)
         LocalClock::s_pInstance = new LocalClock();
-    }
     _Instance = this;
 }
 

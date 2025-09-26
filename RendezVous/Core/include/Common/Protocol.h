@@ -36,7 +36,7 @@ public:
     void SetIncomingConnection(EndPoint*);
     void SetProtocolID(u16);
     void AddMethodID(Message*, u32);
-    void CopyMembers(Protocol const*);
+    void CopyMembers(const Protocol*);
     void AssociateProtocolRequestBroker(ProtocolRequestBrokerInterface*);
     void ClearFlag(u32 newFlag);
 

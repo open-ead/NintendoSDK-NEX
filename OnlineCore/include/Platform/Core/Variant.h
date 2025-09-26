@@ -20,6 +20,7 @@ public:
         char* str;
 
         Data() {}
+
         ~Data() {}
     };
 

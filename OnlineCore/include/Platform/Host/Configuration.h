@@ -3,6 +3,7 @@
 #include <vector>
 #include "Platform/Core/MemAllocator.h"
 #include "Platform/Core/RootObject.h"
+
 namespace nn::nex {
 
 class ConfigurationVariable;
