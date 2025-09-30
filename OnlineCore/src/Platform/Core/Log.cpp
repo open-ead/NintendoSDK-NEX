@@ -48,31 +48,25 @@ void Log::OutputImpl(const char* str, std::va_list va, void* ptr) {
     if (m_LogFilter && !m_LogFilter->OutputCurrentTrace())
         return;
 
-    if (!m_OutputFormat)
-        return;
-
-    // the code is flawless but it mismatches...
     char buffer[0x100] = {0};
     u32 size = sizeof(buffer) - 2;
 
-    m_OutputFormat->StartString(buffer, size);
-    m_OutputFormat->StartPrefixes(buffer, size);
-    AddCustomPrefix(buffer, size, ptr);
-    m_OutputFormat->AddPrefixes(buffer, size);
-    m_OutputFormat->EndPrefixes(buffer, size);
-    m_OutputFormat->AddIndent(buffer, size);
-    m_OutputFormat->AddMessage(buffer, size + 1, str, va);
-    m_OutputFormat->EndString(buffer, size);
-    m_LogDevice->Output(buffer);
+    if (m_OutputFormat) {
+        PrepareOutput(buffer, sizeof(buffer), ptr);
+        m_OutputFormat->AddMessage(buffer, size + 1, str, va);
+        m_OutputFormat->EndString(buffer, size);
+        m_LogDevice->Output(buffer);
+    }
 }
 
-void Log::PrepareOutput(char* output, u32 val, void* ptr) {
-    u32 i = val - 2;
+void Log::PrepareOutput(char* output, u32 size, void* ptr) {
+    u32 i = size - 2;
     m_OutputFormat->StartString(output, i);
-    AddCustomPrefix(output, val, ptr);
-    m_OutputFormat->AddPrefixes(output, val);
-    m_OutputFormat->EndPrefixes(output, val);
-    m_OutputFormat->AddIndent(output, val);
+    m_OutputFormat->StartPrefixes(output, i);
+    AddCustomPrefix(output, i, ptr);
+    m_OutputFormat->AddPrefixes(output, i);
+    m_OutputFormat->EndPrefixes(output, i);
+    m_OutputFormat->AddIndent(output, i);
 }
 
 void Log::SetOutputFormat(OutputFormat* outputFormat) {
