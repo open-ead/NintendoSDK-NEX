@@ -8,13 +8,13 @@ class TimeProvider;
 class Time {
 public:
     static u64 GetTime();
-    void Reset();
-    void RegisterTimeProvider(TimeProvider*);
+    static void Reset();
+    static void RegisterTimeProvider(TimeProvider* provider);
     void Multiply(f32) const;
     void Divide(f32) const;
     void Scale(f32) const;
-    static void ConvertTimeoutToDeadline(u32);
-    static void ConvertDeadlineToTimeout(Time);
+    static Time ConvertTimeoutToDeadline(u32 timeout);
+    static u32 ConvertDeadlineToTimeout(Time deadline);
 
     u64 GetTimeVal() const { return m_Time; }
 
