@@ -13,7 +13,7 @@ public:
     static u32 VersionMajor();
     static u32 VersionMinor();
     static u32 ExtractFirstNumber(u32 versionNumber);
-    static void ExtractSecondNumber(u32 versionNumber);
+    static u32 ExtractSecondNumber(u32 versionNumber);
     static void Banner(const char*);
 };
 }  // namespace nn::nex

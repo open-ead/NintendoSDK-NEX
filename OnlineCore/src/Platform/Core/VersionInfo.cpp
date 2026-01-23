@@ -33,7 +33,9 @@ u32 VersionInfo::ExtractFirstNumber(u32 versionNumber) {
     return versionNumber >> 0x10;
 }
 
-void VersionInfo::ExtractSecondNumber(u32 versionNumber) {}
+u32 VersionInfo::ExtractSecondNumber(u32 versionNumber) {
+    return versionNumber & 0xFFFFFFFF;
+}
 
 void VersionInfo::Banner(const char*) {}
 

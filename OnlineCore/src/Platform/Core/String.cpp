@@ -18,7 +18,7 @@ void StrCopy(T* str, const T* copyStr, u64 unk) {
 
 String::String(const char* str) {
     if (str)
-        size_t len = strlen(str);
+        strlen(str);
     else
         str = nullptr;
 }
