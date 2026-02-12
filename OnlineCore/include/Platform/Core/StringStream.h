@@ -29,7 +29,8 @@ public:
     void BytesDump(const unsigned char*, u64);
     void BytesAsciiDump(const unsigned char*, u64);
 
-    char* Begin() const{ return mBegin; }
+    char* Begin() const { return mBegin; }
+
     char* End() const { return mEnd; }
 
 private:

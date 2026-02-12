@@ -1,5 +1,9 @@
 #include "Core/InstantiationContext.h"
 
+#define SET_NULL(ptr)                                                                              \
+    (ptr) = 0;                                                                                     \
+    asm("");
+
 namespace nn::nex {
 InstantiationContext::InstantiationContext() {
     byte_80 = true;
@@ -12,10 +16,6 @@ InstantiationContext::~InstantiationContext() {}
 void InstantiationContext::AddInstance(InstanceControl* instanceControl, u32) {}
 
 void InstantiationContext::DelInstance(InstanceControl* instanceControl, u32) {}
-
-#define SET_NULL(ptr)                                                                              \
-    (ptr) = 0;                                                                                     \
-    asm("");
 
 void InstantiationContext::InitContext() {
     SET_NULL(m_Context[0]);
