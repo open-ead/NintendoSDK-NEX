@@ -134,7 +134,7 @@ void InetAddress::ToStr(char* out) const {
 
     stringStream << &addrStr << ":" << &portStr;
 
-    // strcpy(out, stringStream);
+    strcpy(out, stringStream.Begin());
 }
 
 String InetAddress::ToStr() const {

@@ -9,7 +9,7 @@ public:
     virtual ~StringStream();
 
     void FreeBuffer();
-    void GetLength() const;
+    long GetLength() const;
     void Clear();
     void FreeBuffer(char*);
     void ResizeBuffer(u64);
@@ -28,5 +28,18 @@ public:
     StringStream& operator<<(long);
     void BytesDump(const unsigned char*, u64);
     void BytesAsciiDump(const unsigned char*, u64);
+
+    char* Begin() const{ return mBegin; }
+    char* End() const { return mEnd; }
+
+private:
+    char* mBegin;
+    long mCapacity = 0x100;
+    char* mEnd;
+    char mBuffer[0x100];
+    bool _120;
+    bool _121;
+    bool _122;
+    bool _123;
 };
 }  // namespace nn::nex
