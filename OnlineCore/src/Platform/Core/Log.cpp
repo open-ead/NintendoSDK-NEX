@@ -39,8 +39,6 @@ void Log::OutputString(const char* str, ...) {
     OutputImpl(str, va, nullptr);
 }
 
-void Log::AddCustomPrefix(char*, s32, void*) {}
-
 void Log::OutputImpl(const char* str, std::va_list va, void* ptr) {
     if (!m_LogDevice)
         return;

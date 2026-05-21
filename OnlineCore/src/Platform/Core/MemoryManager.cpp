@@ -74,8 +74,4 @@ const char* MemoryManager::GetInstructionTypeString(_InstructionType instruction
         return "UNDEFINED INSTRUCTION TYPE!";
 }
 
-void MemoryManager::BeginProtection() {}
-
-void MemoryManager::EndProtection() {}
-
 }  // namespace nn::nex

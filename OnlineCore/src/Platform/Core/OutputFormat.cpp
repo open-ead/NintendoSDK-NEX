@@ -11,8 +11,6 @@ OutputFormat::OutputFormat() {
     m_ulTime = Time::GetTime();
 }
 
-OutputFormat::~OutputFormat() {}
-
 void OutputFormat::StartString(char* str, u32) {
     *str = 0;
 }

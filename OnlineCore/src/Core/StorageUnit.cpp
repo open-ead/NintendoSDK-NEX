@@ -30,10 +30,6 @@ bool StorageUnit::CopyData(const StorageUnit* source, StorageUnit* destination) 
     return AppendData(source, destination);
 }
 
-bool StorageUnit::Reserve(u64) {
-    return false;
-}
-
 u32 StorageUnit::GetReservedSize() {
     return 0;
 }
