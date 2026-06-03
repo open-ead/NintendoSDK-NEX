@@ -38,7 +38,7 @@ u64 InetAddress::GetKey() const {
 }
 
 u16 InetAddress::GetPortNumber() const {
-    return nn::socket::InetHtons(m_Attributes.port);
+    return nn::socket::InetNtohs(m_Attributes.port);
 }
 
 void InetAddress::EnableAutoLookup(bool isAutoLookup) {
