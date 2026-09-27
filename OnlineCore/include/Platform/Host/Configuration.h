@@ -16,7 +16,7 @@ public:
     void CreateVariable(ConfigurationVariable*);
     void FindVariable(char*);
     void GetVariablesNumber();
-    void GetVariable(u32);
+    void GetVariable(uint32_t);
 
 private:
     std::vector<ConfigurationVariable*, MemAllocator<ConfigurationVariable*>> m_vVariables;

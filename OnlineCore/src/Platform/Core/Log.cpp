@@ -47,7 +47,7 @@ void Log::OutputImpl(const char* str, std::va_list va, void* ptr) {
         return;
 
     char buffer[0x100] = {0};
-    u32 size = sizeof(buffer) - 2;
+    uint32_t size = sizeof(buffer) - 2;
 
     if (m_OutputFormat) {
         PrepareOutput(buffer, sizeof(buffer), ptr);
@@ -57,8 +57,8 @@ void Log::OutputImpl(const char* str, std::va_list va, void* ptr) {
     }
 }
 
-void Log::PrepareOutput(char* output, u32 size, void* ptr) {
-    u32 i = size - 2;
+void Log::PrepareOutput(char* output, uint32_t size, void* ptr) {
+    uint32_t i = size - 2;
     m_OutputFormat->StartString(output, i);
     m_OutputFormat->StartPrefixes(output, i);
     AddCustomPrefix(output, i, ptr);

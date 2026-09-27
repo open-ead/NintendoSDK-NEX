@@ -9,7 +9,7 @@ Plugin::~Plugin() {}
 
 void Plugin::Unload() {}
 
-void Plugin::Trace(u64) {}
+void Plugin::Trace(uint64_t) {}
 
 bool Plugin::Initialize() {
     return true;

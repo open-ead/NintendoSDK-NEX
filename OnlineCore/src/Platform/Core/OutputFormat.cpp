@@ -11,15 +11,15 @@ OutputFormat::OutputFormat() {
     m_ulTime = Time::GetTime();
 }
 
-void OutputFormat::StartString(char* str, u32) {
+void OutputFormat::StartString(char* str, uint32_t) {
     *str = 0;
 }
 
-u32 OutputFormat::StartPrefixes(char* str, u32 startPos) {
+uint32_t OutputFormat::StartPrefixes(char* str, uint32_t startPos) {
     return AppendToString(str, "(", startPos);
 }
 
-u32 OutputFormat::AppendToString(char* dest, const char* append, u32 startPos) {
+uint32_t OutputFormat::AppendToString(char* dest, const char* append, uint32_t startPos) {
     size_t len = strlen(dest);
     size_t start = startPos - len;
     if (start != 0)
@@ -27,7 +27,7 @@ u32 OutputFormat::AppendToString(char* dest, const char* append, u32 startPos) {
     return len;
 }
 
-void OutputFormat::PreparePrefix(char* dest, u32 val, const char* str, ...) {
+void OutputFormat::PreparePrefix(char* dest, uint32_t val, const char* str, ...) {
     std::va_list args;
     va_start(args, str);
 
@@ -39,21 +39,21 @@ void OutputFormat::PreparePrefix(char* dest, u32 val, const char* str, ...) {
     AddMessageImpl(dest, val, str, args2);
 }
 
-u32 OutputFormat::AddMessageImpl(char* dest, u32, const char* str, std::va_list) {
+uint32_t OutputFormat::AddMessageImpl(char* dest, uint32_t, const char* str, std::va_list) {
     return 0;
 }
 
-void OutputFormat::AddPrefixes(char* str, u32) {}
+void OutputFormat::AddPrefixes(char* str, uint32_t) {}
 
-void OutputFormat::EndPrefixes(char* str, u32) {}
+void OutputFormat::EndPrefixes(char* str, uint32_t) {}
 
-void OutputFormat::AddIndent(char* str, u32) {}
+void OutputFormat::AddIndent(char* str, uint32_t) {}
 
-u32 OutputFormat::AddMessage(char* dest, u32, const char* str, std::va_list) {
+uint32_t OutputFormat::AddMessage(char* dest, uint32_t, const char* str, std::va_list) {
     return 0;
 }
 
-void OutputFormat::EndString(char* str, u32) {}
+void OutputFormat::EndString(char* str, uint32_t) {}
 
 void OutputFormat::EnableNumberTraces(bool toggle) {
     field_c = toggle;
@@ -103,11 +103,11 @@ void OutputFormat::AddPrefix(const char* str) {
     m_Prefix = str;
 }
 
-void OutputFormat::IncreaseIndent(u32 val) {
+void OutputFormat::IncreaseIndent(uint32_t val) {
     m_Indent += val;
 }
 
-void OutputFormat::DecreaseIndent(u32 val) {
+void OutputFormat::DecreaseIndent(uint32_t val) {
     m_Indent = (m_Indent > val) ? (m_Indent - val) : 0;
 }
 

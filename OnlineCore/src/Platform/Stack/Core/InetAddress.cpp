@@ -15,17 +15,17 @@ InetAddress::InetAddress(const InetAddress& other) {
     memcpy(&m_Attributes.byte_8, &other.m_Attributes.byte_8, 0x80);
 }
 
-InetAddress::InetAddress(void* ptr, u32) {
+InetAddress::InetAddress(void* ptr, uint32_t) {
     m_Attributes = *(InetAttributes*)ptr;
 }
 
-InetAddress::InetAddress(const char* address, u16 port) {
+InetAddress::InetAddress(const char* address, uint16_t port) {
     Init();
     SetAddress(address);
     m_Attributes.port = nn::socket::InetHtons(port);
 }
 
-InetAddress::InetAddress(u32 addr, u16 port) {
+InetAddress::InetAddress(uint32_t addr, uint16_t port) {
     Init();
     m_Attributes.addr = socket::InetHtonl(addr);
     m_Attributes.port = nn::socket::InetHtons(port);
@@ -33,11 +33,11 @@ InetAddress::InetAddress(u32 addr, u16 port) {
 
 InetAddress::~InetAddress() = default;
 
-u64 InetAddress::GetKey() const {
-    return ((u64)m_Attributes.addr << 32) | socket::InetNtohs(m_Attributes.port);
+uint64_t InetAddress::GetKey() const {
+    return ((uint64_t)m_Attributes.addr << 32) | socket::InetNtohs(m_Attributes.port);
 }
 
-u16 InetAddress::GetPortNumber() const {
+uint16_t InetAddress::GetPortNumber() const {
     return nn::socket::InetNtohs(m_Attributes.port);
 }
 
@@ -57,11 +57,11 @@ InetAddress& InetAddress::operator=(const InetAddress& other) {
 
 // void InetAddress::SetAddress(const char*) {}  // TODO
 
-void InetAddress::SetPortNumber(u16 port) {
+void InetAddress::SetPortNumber(uint16_t port) {
     m_Attributes.port = nn::socket::InetHtons(port);
 }
 
-void InetAddress::SetAddress(u32 addr) {
+void InetAddress::SetAddress(uint32_t addr) {
     m_Attributes.addr = nn::socket::InetHtonl(addr);
 }
 
@@ -75,18 +75,18 @@ bool InetAddress::IsLocalHost() const {
     return GetAddress() == localHost.GetAddress();
 }
 
-u32 InetAddress::GetAddress() const {
+uint32_t InetAddress::GetAddress() const {
     return nn::socket::InetNtohl(m_Attributes.addr);
 }
 
-u32 InetAddress::String2Address(const char* str) {
-    u64 addr;
+uint32_t InetAddress::String2Address(const char* str) {
+    uint64_t addr;
     if (nn::socket::InetPton(2, str, &addr) > 0)
         return addr;
     return -1;
 }
 
-bool InetAddress::GetAddress(char* output, u64 val) const {
+bool InetAddress::GetAddress(char* output, uint64_t val) const {
     if (val < 16)
         return false;
     char dest[20];
@@ -95,7 +95,7 @@ bool InetAddress::GetAddress(char* output, u64 val) const {
     return true;
 }
 
-void InetAddress::SetNetworkAddress(u32 addr) {
+void InetAddress::SetNetworkAddress(uint32_t addr) {
     m_Attributes.addr = addr;
 }
 
@@ -107,11 +107,11 @@ String InetAddress::GetAddressStr() const {
     return dest;
 }
 
-void InetAddress::SetNetworkPortNumber(u16 port) {
+void InetAddress::SetNetworkPortNumber(uint16_t port) {
     m_Attributes.port = port;
 }
 
-bool InetAddress::GetPortNumber(char* str, u32 size) const {
+bool InetAddress::GetPortNumber(char* str, uint32_t size) const {
     snprintf(str, size, "%d", GetPortNumber());
     return true;
 }
@@ -122,7 +122,7 @@ String InetAddress::GetPortNumberStr() const {
     return out;
 }
 
-void InetAddress::Trace(u64) const {
+void InetAddress::Trace(uint64_t) const {
     char out[128];
     ToStr(out);
 }

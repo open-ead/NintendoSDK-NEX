@@ -4,7 +4,7 @@ This is a decompilation of the NEX networking library used on the Nintendo Switc
 
 Nintendo's NEX implementation is directly based on Rendez-Vous by Quazal.
 
-As this repository will ever only be used as a part of another decomp, [nnheaders](https://github.com/open-ead/nnheaders) has not been added as a submodule to avoid circular dependency, but you are expected to have it in your project.
+As this repository will ever only be used as a part of another decomp, [nnsdk](https://github.com/open-ead/nnsdk) has not been added as a submodule to avoid circular dependency, but you are expected to have it in your project.
 
 ### Contributing
 

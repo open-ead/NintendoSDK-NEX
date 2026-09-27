@@ -2,7 +2,7 @@
 #include "Platform/Core/SystemClock.h"
 
 namespace nn::nex {
-u64 Time::GetTime() {
+uint64_t Time::GetTime() {
     if (SystemClock::s_needCorrection)
         SystemClock::s_cachedTime = SystemClock::GetTimeImpl(false);
     else

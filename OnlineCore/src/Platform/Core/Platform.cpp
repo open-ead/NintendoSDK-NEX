@@ -26,7 +26,7 @@ void Platform::DeleteInstance() {
         delete _Instance;
 }
 
-void Platform::Sleep(u32 milliseconds) {
+void Platform::Sleep(uint32_t milliseconds) {
     if (milliseconds)
         nn::os::SleepThread(nn::TimeSpan::FromMilliSeconds(milliseconds));
     else
@@ -37,34 +37,34 @@ nn::os::Tick Platform::GetTick() {
     return nn::os::GetSystemTick();
 }
 
-void Platform::NetworkToHost(const unsigned char* network, u16* host) {
+void Platform::NetworkToHost(const unsigned char* network, uint16_t* host) {
     *host = (network[0] << 8) + network[1];
 }
 
-void Platform::NetworkToHost(const unsigned char* network, u32* host) {
+void Platform::NetworkToHost(const unsigned char* network, uint32_t* host) {
     *host = (network[0] << 24) + (network[1] << 16) + (network[2] << 8) + network[3];
 }
 
-void Platform::NetworkToHost(const unsigned char* network, u64* host) {
-    *host = ((u64)network[0] << 56) + ((u64)network[1] << 48) + ((u64)network[2] << 40) +
-                ((u64)network[3] << 32) + ((u64)network[4] << 24) + (network[5] << 16) +
-                (network[6] << 8) |
+void Platform::NetworkToHost(const unsigned char* network, uint64_t* host) {
+    *host = ((uint64_t)network[0] << 56) + ((uint64_t)network[1] << 48) +
+                ((uint64_t)network[2] << 40) + ((uint64_t)network[3] << 32) +
+                ((uint64_t)network[4] << 24) + (network[5] << 16) + (network[6] << 8) |
             network[7];
 }
 
-void Platform::HostToNetwork(const u16* host, unsigned char* network) {
+void Platform::HostToNetwork(const uint16_t* host, unsigned char* network) {
     network[0] = *host >> 8;
     network[1] = *host;
 }
 
-void Platform::HostToNetwork(const u32* host, unsigned char* network) {
+void Platform::HostToNetwork(const uint32_t* host, unsigned char* network) {
     network[0] = *host >> 24;
     network[1] = *host >> 16;
     network[2] = *host >> 8;
     network[3] = *host;
 }
 
-void Platform::HostToNetwork(const u64* host, unsigned char* network) {
+void Platform::HostToNetwork(const uint64_t* host, unsigned char* network) {
     network[0] = *host >> 56;
     network[1] = *host >> 48;
     network[2] = *host >> 40;
@@ -84,13 +84,13 @@ void Platform::WarnObsoleteMethod(const char* a2, const char* a3) {
 #define STATE_VECTOR_LENGTH 624
 
 struct tagMTRand {
-    u32 mt[STATE_VECTOR_LENGTH];
-    u32 index;
+    uint32_t mt[STATE_VECTOR_LENGTH];
+    uint32_t index;
 } rand;
 
 // MT19937 algorithm from https://github.com/ESultanik/mtwister/blob/master/mtwister.c#L19
-void Platform::SetRandomNumberSeed(u32 seed) {
-    u32 defaultSeed = 0x1105;
+void Platform::SetRandomNumberSeed(uint32_t seed) {
+    uint32_t defaultSeed = 0x1105;
 
     rand.mt[0] = (seed == 0) ? defaultSeed : seed;
     rand.mt[1] = rand.mt[0] * 0x10DCD;
@@ -101,21 +101,21 @@ void Platform::SetRandomNumberSeed(u32 seed) {
     Platform::s_bSeedIsInitialized = true;
 }
 
-void Platform::GetRandomNumber(u32 val) {}
+void Platform::GetRandomNumber(uint32_t val) {}
 
-u32 Platform::GetRandomSeed() {
-    u32 bytes = 0;
+uint32_t Platform::GetRandomSeed() {
+    uint32_t bytes = 0;
     nn::os::GenerateRandomBytes(&bytes, 4);
     return bytes;
 }
 
-void Platform::GetRealRandomNumber(f32 val) {}
+void Platform::GetRealRandomNumber(float val) {}
 
-u32 Platform::GetProcessID() {
+uint32_t Platform::GetProcessID() {
     return 0;
 }
 
-u64 Platform::GetPlatformID() {
+uint64_t Platform::GetPlatformID() {
     if (!s_HasInitialized)
         s_HasInitialized = true;
     return 0;

@@ -8,8 +8,8 @@ namespace nn::nex {
 
 template <typename T>
 void SpecialDeleteArray(T* ptr) {  // This needs to be here to inline
-    u32* v1 = (u32*)(ptr - 4);
-    for (u32 i = 0; i < *v1; i++)  // from wii u, optimized out on switch
+    uint32_t* v1 = (uint32_t*)(ptr - 4);
+    for (uint32_t i = 0; i < *v1; i++)  // from wii u, optimized out on switch
         ;
     MemoryManager::Free(v1);
 }
@@ -26,28 +26,28 @@ Variant::Variant(const Variant& other) {
 
 Variant::~Variant() {}
 
-Variant::Variant(s64 value) {
-    field_0.s64 = value;
+Variant::Variant(int64_t value) {
+    field_0.int64_t = value;
     field_8 = Type::Signed;
 }
 
-Variant::Variant(u64 value) {
-    field_0.u64 = value;
+Variant::Variant(uint64_t value) {
+    field_0.uint64_t = value;
     field_8 = Type::Unsigned;
 }
 
-Variant::Variant(s32 value) {
-    field_0.s64 = value;
+Variant::Variant(int32_t value) {
+    field_0.int64_t = value;
     field_8 = Type::Signed;
 }
 
-Variant::Variant(u32 value) {
-    field_0.u64 = value;
+Variant::Variant(uint32_t value) {
+    field_0.uint64_t = value;
     field_8 = Type::Unsigned;
 }
 
-Variant::Variant(f64 value) {
-    field_0.f64 = value;
+Variant::Variant(double value) {
+    field_0.d = value;
     field_8 = Type::Double;
 }
 
@@ -61,40 +61,40 @@ Variant::Variant(bool value) {
 // Variant::Variant(const char* value) : field_8(Type::String) {}
 
 Variant::Variant(const DateTime& value) : field_8(Type::DateTime) {
-    field_0.u64 = value;
+    field_0.uint64_t = value;
 }
 
 Variant::Type Variant::GetType() const {
     return field_8;
 }
 
-u64 Variant::GetUInt64Value() const {
+uint64_t Variant::GetUInt64Value() const {
     if (field_8 == Type::Unsigned || field_8 == Type::Signed)
-        return field_0.u64;
+        return field_0.uint64_t;
     return 0;
 }
 
-s64 Variant::GetInt64Value() const {
+int64_t Variant::GetInt64Value() const {
     if (field_8 == Type::Unsigned || field_8 == Type::Signed)
-        return field_0.s64;
+        return field_0.int64_t;
     return 0;
 }
 
-s32 Variant::GetInt32Value() const {
+int32_t Variant::GetInt32Value() const {
     if (field_8 == Type::Unsigned || field_8 == Type::Signed)
-        return field_0.s64;
+        return field_0.int64_t;
     return 0;
 }
 
-u32 Variant::GetUInt32Value() const {
+uint32_t Variant::GetUInt32Value() const {
     if (field_8 == Type::Unsigned || field_8 == Type::Signed)
-        return field_0.u64;
+        return field_0.uint64_t;
     return 0;
 }
 
-f64 Variant::GetDoubleValue() const {
+double Variant::GetDoubleValue() const {
     if (field_8 == Type::Double)
-        return field_0.f64;
+        return field_0.d;
     return 0.0;
 }
 
@@ -106,7 +106,7 @@ bool Variant::GetBoolValue() const {
 
 DateTime Variant::GetDateTimeValue() const {
     if (field_8 == Type::DateTime)
-        return (DateTime)(field_0.u64);
+        return (DateTime)(field_0.uint64_t);
 
     return DateTime();
 }
@@ -123,19 +123,19 @@ Variant& Variant::operator=(Variant&& other) {
     field_8 = other.field_8;
     switch (other.field_8) {
     case Type::Signed:
-        field_0.s64 = other.field_0.s64;
+        field_0.int64_t = other.field_0.int64_t;
         break;
     case Type::Double:
-        field_0.f64 = other.field_0.f64;
+        field_0.d = other.field_0.d;
         break;
     case Type::String:
         field_0.str = other.field_0.str;
         break;
     case Type::DateTime:
-        field_0.u64 = other.field_0.u64;
+        field_0.uint64_t = other.field_0.uint64_t;
         break;
     case Type::Unsigned:
-        field_0.u64 = other.field_0.u64;
+        field_0.uint64_t = other.field_0.uint64_t;
         break;
     case Type::Bool:
         field_0.b = other.field_0.b;
@@ -152,6 +152,6 @@ bool Variant::operator!=(const Variant& other) const {
     return !(this == &other);
 }
 
-void Variant::Trace(u32 level) const {}
+void Variant::Trace(uint32_t level) const {}
 
 }  // namespace nn::nex

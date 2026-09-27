@@ -13,19 +13,19 @@ InterfaceInfo::InterfaceInfo() {
 
 InterfaceInfo::~InterfaceInfo() {}
 
-void InterfaceInfo::SetAddress(u32 addr) {
+void InterfaceInfo::SetAddress(uint32_t addr) {
     m_Address = addr;
 }
 
-void InterfaceInfo::SetBroadcastAddress(u32 broadcastAddr) {
+void InterfaceInfo::SetBroadcastAddress(uint32_t broadcastAddr) {
     m_BroadcastAddress = broadcastAddr;
 }
 
-void InterfaceInfo::SetMask(u32 mask) {
+void InterfaceInfo::SetMask(uint32_t mask) {
     m_Mask = mask;
 }
 
-void InterfaceInfo::SetFlags(u32 flags) {
+void InterfaceInfo::SetFlags(uint32_t flags) {
     m_Flags = flags;
 }
 
@@ -33,39 +33,39 @@ void InterfaceInfo::SetName(char* name) {
     m_Name = name;
 }
 
-bool InterfaceInfo::Addr2Str(u32 a2, char* out, u32 a4) {
+bool InterfaceInfo::Addr2Str(uint32_t a2, char* out, uint32_t a4) {
     char dest[20];
-    s32 temp = a2;
+    int32_t temp = a2;
     socket::InetNtop(2, &temp, dest, sizeof(dest));
     StringConversion::Char8_2T(dest, out, a4);
     return true;
 }
 
-bool InterfaceInfo::GetAddress(char* out, u32 a3) {
+bool InterfaceInfo::GetAddress(char* out, uint32_t a3) {
     char dest[20];
-    s32 temp = m_Address;
+    int32_t temp = m_Address;
     socket::InetNtop(2, &temp, dest, sizeof(dest));
     StringConversion::Char8_2T(dest, out, a3);
     return true;
 }
 
-bool InterfaceInfo::GetBroadcastAddress(char* out, u32 a3) {
+bool InterfaceInfo::GetBroadcastAddress(char* out, uint32_t a3) {
     char dest[20];
-    s32 temp = m_BroadcastAddress;
+    int32_t temp = m_BroadcastAddress;
     socket::InetNtop(2, &temp, dest, sizeof(dest));
     StringConversion::Char8_2T(dest, out, a3);
     return true;
 }
 
-bool InterfaceInfo::GetMask(char* out, u32 a3) {
+bool InterfaceInfo::GetMask(char* out, uint32_t a3) {
     char dest[20];
-    s32 temp = m_Mask;
+    int32_t temp = m_Mask;
     socket::InetNtop(2, &temp, dest, sizeof(dest));
     StringConversion::Char8_2T(dest, out, a3);
     return true;
 }
 
-bool InterfaceInfo::GetName(char* out, u32 a3) {
+bool InterfaceInfo::GetName(char* out, uint32_t a3) {
     const char* cstr = GetName();
     if (cstr) {
         strncpy(out, cstr, a3);
@@ -75,10 +75,10 @@ bool InterfaceInfo::GetName(char* out, u32 a3) {
     return false;
 }
 
-bool InterfaceInfo::GetFlags(char* out, u32 size) {
+bool InterfaceInfo::GetFlags(char* out, uint32_t size) {
     char dest[512] = {0};
 
-    u32 flags = (u32)m_Flags;
+    uint32_t flags = (uint32_t)m_Flags;
     if (flags & 0)
         strcat(dest, "POINT2POINT");
     if (flags & 4)
@@ -92,19 +92,19 @@ bool InterfaceInfo::GetFlags(char* out, u32 size) {
     return true;
 }
 
-u32 InterfaceInfo::GetAddress() {
+uint32_t InterfaceInfo::GetAddress() {
     return m_Address;
 }
 
-u32 InterfaceInfo::GetBroadcastAddress() {
+uint32_t InterfaceInfo::GetBroadcastAddress() {
     return m_BroadcastAddress;
 }
 
-u32 InterfaceInfo::GetMask() {
+uint32_t InterfaceInfo::GetMask() {
     return m_Mask;
 }
 
-u32 InterfaceInfo::GetFlags() {
+uint32_t InterfaceInfo::GetFlags() {
     return m_Flags;
 }
 
@@ -112,7 +112,7 @@ const char* InterfaceInfo::GetName() {
     return m_Name.cstr();
 }
 
-void InterfaceInfo::Trace(u64) {
+void InterfaceInfo::Trace(uint64_t) {
     char v6[128];
     char v7[512];
     const char* cstr = GetName();

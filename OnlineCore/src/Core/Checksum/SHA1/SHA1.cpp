@@ -24,15 +24,15 @@ void Sha1::Init() {
     sha1Impl->Initialize();
 }
 
-void Sha1::Update(const void* ptr, u64 val) {
+void Sha1::Update(const void* ptr, uint64_t val) {
     m_Sha1Impl->Update(ptr, val);
 }
 
-void Sha1::GetHash(void* ptr, u64 val) {
+void Sha1::GetHash(void* ptr, uint64_t val) {
     m_Sha1Impl->GetHash(ptr, val);
 }
 
-void Sha1::GenerateHash(void* ptr, u64 val, const void* ptr2, u64 val2) {
+void Sha1::GenerateHash(void* ptr, uint64_t val, const void* ptr2, uint64_t val2) {
     crypto::GenerateSha1Hash(ptr, val, ptr2, val2);
 }
 
