@@ -11,7 +11,7 @@ namespace nn::nex {}
 
 namespace nn::nex {
 const char* qResult::GetReturnCodeString() const {
-    u32 errorCode;
+    uint32_t errorCode;
     const char* result;
     errorCode = m_ErrorCode;
     if ((m_ErrorCode & 0x80000000) == 0)

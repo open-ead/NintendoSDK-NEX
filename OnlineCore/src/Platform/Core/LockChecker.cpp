@@ -1,7 +1,7 @@
 #include "Platform/Core/LockChecker.h"
 
 namespace nn::nex {
-LockChecker::LockChecker(u32 val) {
+LockChecker::LockChecker(uint32_t val) {
     dword_C = val;
 }
 

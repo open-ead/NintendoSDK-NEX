@@ -5,35 +5,35 @@ const char* VersionInfo::GetCopyrightString() {
     return "Copyright (c) 1998-2009 Quazal Technologies Inc";
 }
 
-u16 VersionInfo::V1() {
+uint16_t VersionInfo::V1() {
     return 4;
 }
 
-u16 VersionInfo::V2() {
+uint16_t VersionInfo::V2() {
     return 1;
 }
 
-u16 VersionInfo::V3() {
+uint16_t VersionInfo::V3() {
     return 2;
 }
 
-u16 VersionInfo::V4() {
+uint16_t VersionInfo::V4() {
     return 0x0FA7;
 }
 
-u32 VersionInfo::VersionMajor() {
+uint32_t VersionInfo::VersionMajor() {
     return 0x40001;
 }
 
-u32 VersionInfo::VersionMinor() {
+uint32_t VersionInfo::VersionMinor() {
     return 0x20FA7;
 }
 
-u32 VersionInfo::ExtractFirstNumber(u32 versionNumber) {
+uint32_t VersionInfo::ExtractFirstNumber(uint32_t versionNumber) {
     return versionNumber >> 0x10;
 }
 
-u32 VersionInfo::ExtractSecondNumber(u32 versionNumber) {
+uint32_t VersionInfo::ExtractSecondNumber(uint32_t versionNumber) {
     return versionNumber & 0xFFFFFFFF;
 }
 

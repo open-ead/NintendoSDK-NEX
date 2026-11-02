@@ -1,18 +1,18 @@
 #include "Core/StorageUnit.h"
 
 namespace nn::nex {
-inline u64 clampMax(u64 val, u64 max_) {
+inline uint64_t clampMax(uint64_t val, uint64_t max_) {
     return val > max_ ? max_ : val;
 }
 
 bool StorageUnit::AppendData(const StorageUnit* source, StorageUnit* destination) {
-    u8 buffer[4096];
+    uint8_t buffer[4096];
     size_t sourceSize = source->GetSize();
     size_t destinationSize = destination->GetSize();
 
-    u64 offset = 0;
+    uint64_t offset = 0;
     while (offset < sourceSize) {
-        u64 nextOffset = clampMax(offset + sizeof(buffer), sourceSize);
+        uint64_t nextOffset = clampMax(offset + sizeof(buffer), sourceSize);
 
         if (source->Read(offset, nextOffset - offset, buffer) == 0)
             return 0;
@@ -30,7 +30,7 @@ bool StorageUnit::CopyData(const StorageUnit* source, StorageUnit* destination) 
     return AppendData(source, destination);
 }
 
-u32 StorageUnit::GetReservedSize() {
+uint32_t StorageUnit::GetReservedSize() {
     return 0;
 }
 

@@ -9,13 +9,13 @@ InstantiationContext::InstantiationContext() {
     byte_80 = true;
 }
 
-InstantiationContext::InstantiationContext(InstanceControl* instanceControl, u32) {}
+InstantiationContext::InstantiationContext(InstanceControl* instanceControl, uint32_t) {}
 
 InstantiationContext::~InstantiationContext() {}
 
-void InstantiationContext::AddInstance(InstanceControl* instanceControl, u32) {}
+void InstantiationContext::AddInstance(InstanceControl* instanceControl, uint32_t) {}
 
-void InstantiationContext::DelInstance(InstanceControl* instanceControl, u32) {}
+void InstantiationContext::DelInstance(InstanceControl* instanceControl, uint32_t) {}
 
 void InstantiationContext::InitContext() {
     SET_NULL(m_Context[0]);

@@ -11,7 +11,8 @@ DateTime::DateTime() : m_ulTime(0) {}
 
 DateTime::DateTime(const DateTime& dateTime) : m_ulTime(dateTime.m_ulTime) {}
 
-// DateTime::DateTime(u16 year, u8 month, u8 day, u8 hour, u8 minute, u8 second) {}
+// DateTime::DateTime(uint16_t year, uint8_t month, uint8_t day, uint8_t hour, uint8_t minute,
+// uint8_t second) {}
 
 // DateTime::DateTime(const time::PosixTime& posixTime) {}
 
@@ -19,11 +20,11 @@ DateTime::DateTime(const DateTime& dateTime) : m_ulTime(dateTime.m_ulTime) {}
 
 // DateTime::DateTime(const time::CalendarTime& calendarTime) {}
 
-DateTime::operator u64() {
+DateTime::operator uint64_t() {
     return m_ulTime;
 }
 
-DateTime::operator u64() const {
+DateTime::operator uint64_t() const {
     return m_ulTime;
 }
 
@@ -53,31 +54,31 @@ bool DateTime::operator>=(const DateTime& other) const {
 
 // DateTime DateTime::operator-(const DateTime& other) const {}
 
-// void DateTime::FromUnixEpochTime(s64 epochTime) {}
+// void DateTime::FromUnixEpochTime(int64_t epochTime) {}
 
-// s64 DateTime::ToEpochTime() const {}
+// int64_t DateTime::ToEpochTime() const {}
 
-s32 DateTime::GetYear() const {
+int32_t DateTime::GetYear() const {
     return (m_ulTime & 0xFFFC000000) >> 26;
 }
 
-s32 DateTime::GetMonth() const {
+int32_t DateTime::GetMonth() const {
     return (m_ulTime & 0x3C00000) >> 22;
 }
 
-s32 DateTime::GetDay() const {
+int32_t DateTime::GetDay() const {
     return (m_ulTime & 0x3E0000) >> 17;
 }
 
-s32 DateTime::GetHour() const {
+int32_t DateTime::GetHour() const {
     return (m_ulTime & 0x1F000) >> 12;
 }
 
-s32 DateTime::GetMinute() const {
+int32_t DateTime::GetMinute() const {
     return (m_ulTime & 0xFC0) >> 6;
 }
 
-s32 DateTime::GetSecond() const {
+int32_t DateTime::GetSecond() const {
     return m_ulTime & 0x3F;
 }
 
@@ -85,11 +86,11 @@ s32 DateTime::GetSecond() const {
 
 // bool DateTime::IsNever() const {}
 
-// void DateTime::Trace(u64) {}
+// void DateTime::Trace(uint64_t) {}
 
 // time::PosixTime DateTime::ToPosixTime() const {}
 
-// s64 DateTime::ToUnixEpochTime() const {}
+// int64_t DateTime::ToUnixEpochTime() const {}
 
 // time::CalendarTime DateTime::ToCalendarTime() const {}
 
@@ -97,14 +98,14 @@ s32 DateTime::GetSecond() const {
 
 // void DateTime::GetLocalSystemTime(DateTime& dateTime) {}
 
-// bool DateTime::IsLeapYear(s32 year) const {}
+// bool DateTime::IsLeapYear(int32_t year) const {}
 
-// s32 DateTime::DateToDays(s32 year, s32 month, s32 day) const {}
+// int32_t DateTime::DateToDays(int32_t year, int32_t month, int32_t day) const {}
 
-// void DateTime::DaysToDate(s32 days) {}
+// void DateTime::DaysToDate(int32_t days) {}
 
-// void DateTime::FromCustomEpochTime(s64 epochTime, s32 customEpochYear) {}
+// void DateTime::FromCustomEpochTime(int64_t epochTime, int32_t customEpochYear) {}
 
-// void DateTime::FromEpochTime(s64 epochTime) {}
+// void DateTime::FromEpochTime(int64_t epochTime) {}
 
 }  // namespace nn::nex

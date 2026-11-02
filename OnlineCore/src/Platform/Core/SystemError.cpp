@@ -4,8 +4,8 @@
 #include "Platform/Core/GlobalVariables.h"
 
 namespace nn::nex {
-void SystemError::GetErrorString(u32 errorCode, char* buffer, u32 bufferSize) {
-    u32 origBufferSize = bufferSize;
+void SystemError::GetErrorString(uint32_t errorCode, char* buffer, uint32_t bufferSize) {
+    uint32_t origBufferSize = bufferSize;
 
     if (errorCode == 0) {
         strncpy(buffer, "No Error", bufferSize);
@@ -19,7 +19,7 @@ void SystemError::GetErrorString(u32 errorCode, char* buffer, u32 bufferSize) {
         return;
     }
 
-    u32 subsystem = ((ErrorCode)errorCode).GetSubsystem();
+    uint32_t subsystem = ((ErrorCode)errorCode).GetSubsystem();
     if (subsystem != 16) {
         const char* table = g_SubsystemErrorsTable[subsystem]->GetErrorTable()[errorCode & 0xffff];
         strncpy(buffer, table, bufferSize);
@@ -35,7 +35,7 @@ int SystemError::GetLast() {
     return GlobalVariables::s_pGv->getLastError().GetRef();
 }
 
-void SystemError::SignalError(const char*, u32, u32 lastError, u32 lastExtError) {
+void SystemError::SignalError(const char*, uint32_t, uint32_t lastError, uint32_t lastExtError) {
     GlobalVariables::s_pGv->getLastError() = lastError;
     GlobalVariables::s_pGv->getLastExtError() = lastExtError;
 }
@@ -77,7 +77,7 @@ void SystemError::EraseErrorElements(unsigned long value) {
 
 // NON_MATCHING: The functions within ThreadVariable shouldn't be called virtually
 void SystemError::EraseErrorElements() {
-    u64 currentThread = (u64)nn::os::GetCurrentThread();
+    uint64_t currentThread = (uint64_t)nn::os::GetCurrentThread();
     GlobalVariables::s_pGv->getLastError().ClearValue(currentThread);
     GlobalVariables::s_pGv->getLastExtError().ClearValue(currentThread);
 }
@@ -89,8 +89,8 @@ void SystemError::EraseAllErrorElements() {
 }
 
 void SystemError::ClearLast() {
-    u32 lastError = 0;
-    u32 lastExtError = 0;
+    uint32_t lastError = 0;
+    uint32_t lastExtError = 0;
     GlobalVariables::s_pGv->getLastError() = lastError;
     GlobalVariables::s_pGv->getLastExtError() = lastExtError;
 }
@@ -103,19 +103,19 @@ bool SystemError::IsError() {
     return ((ErrorCode)GlobalVariables::s_pGv->getLastError().GetRef()).IsError();
 }
 
-bool SystemError::IsError(u32 errorCode) {
+bool SystemError::IsError(uint32_t errorCode) {
     return ((ErrorCode)errorCode).IsError();
 }
 
-bool SystemError::IsWarning(u32 errorCode) {
+bool SystemError::IsWarning(uint32_t errorCode) {
     return ((ErrorCode)errorCode).IsWarning();
 }
 
-bool SystemError::IsInformational(u32 errorCode) {
+bool SystemError::IsInformational(uint32_t errorCode) {
     return ((ErrorCode)errorCode).IsInformational();
 }
 
-bool SystemError::IsSuccess(u32 errorCode) {
+bool SystemError::IsSuccess(uint32_t errorCode) {
     return ((ErrorCode)errorCode).IsSuccess();
 }
 

@@ -12,11 +12,11 @@ bool ConsoleIO::OutputIsSupported() {
     return true;
 }
 
-u8 ConsoleIO::GetChar(bool unk) {
+uint8_t ConsoleIO::GetChar(bool unk) {
     return 0;
 }
 
-void ConsoleIO::GetCStr(char* ret, u32 unk) {}
+void ConsoleIO::GetCStr(char* ret, uint32_t unk) {}
 
 void ConsoleIO::Print(const char* format, ...) {
     va_list args;

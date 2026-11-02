@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.15)
 
 project(NintendoSDK-NEX CXX)
 
+# see https://github.com/open-ead/nnheaders/blob/master/MIGRATE.md#phase-2-compatibility-gate-of-open-ead-libraries-sead-and-nintendosdk-nex
+option(NEX_USE_OLD_NNHEADERS_REPO "Migration setting for the nnsdk and nnware repo split" ON)
+
 add_compile_definitions(
   VERSION=${NN_NEX_VERSION}
   PROJ=${NN_NEX_PROJECT}
@@ -116,7 +119,6 @@ RendezVous/src/Services/Data.cpp
 )
 
 target_include_directories(NintendoSDK-NEX PUBLIC
-  ../NintendoSDK/include
   OnlineCore/include
   RendezVous/include
   RendezVous/Core/include
@@ -128,3 +130,15 @@ target_compile_options(NintendoSDK-NEX PRIVATE -Wall -Wextra)
 target_compile_options(NintendoSDK-NEX PRIVATE -Wno-invalid-offsetof)
 target_compile_options(NintendoSDK-NEX PRIVATE -fvisibility=default -g1 -flto)
 target_compile_options(NintendoSDK-NEX PRIVATE -Wno-unused-parameter -Wno-unused-private-field)
+
+if(NEX_USE_OLD_NNHEADERS_REPO)
+  target_link_libraries(NintendoSDK-NEX PUBLIC NintendoSDK)
+  target_compile_definitions(NintendoSDK-NEX PUBLIC NEX_USE_OLD_NNHEADERS_REPO)
+else()
+  message(STATUS "Using new nnsdk repo! Please see https://github.com/open-ead/nnheaders/blob/master/MIGRATE.md")
+  message(STATUS "If you do not wish to migrate at this time, put `set(NEX_USE_OLD_NNHEADERS_REPO OFF CACHE BOOL \"Disable nnsdk migration\") in your CMakeLists.txt, or pass -DSEAD_USE_OLD_NNHEADERS_REPO=ON to cmake command")
+  if(NOT TARGET nnSdk)
+    message(FATAL_ERROR "Cannot find NintendoSDK. You need to add open-ead/nnsdk to your project, and put `add_subdirectory(path/to/nnsdk)` somewhere in your CMakeLists.txt")
+  endif()
+  target_link_libraries(NintendoSDK-NEX PUBLIC nnSdk)
+endif()

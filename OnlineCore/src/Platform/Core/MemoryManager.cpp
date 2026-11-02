@@ -13,16 +13,16 @@ MemoryManager::MemoryManager(const char* watermarkName)
     s_eShutDownState = 0;
 }
 
-void* MemoryManager::Allocate(u64 size) {
-    ulong aligned = size + 23 & ~7;
+void* MemoryManager::Allocate(uint64_t size) {
+    size_t aligned = size + 23 & ~7;
 
     void* ptr = GenericMalloc(aligned);
 
     *(void**)(ptr) = (void*)MemoryManager::s_fcnFree;
-    return (void*)(reinterpret_cast<u64*>(ptr) + 2);
+    return (void*)(reinterpret_cast<uint64_t*>(ptr) + 2);
 }
 
-void* MemoryManager::GenericMalloc(u64 size) {
+void* MemoryManager::GenericMalloc(uint64_t size) {
     if (s_fcnMalloc)
         return s_fcnMalloc(size);
     else
@@ -45,7 +45,7 @@ void MemoryManager::GenericFree(fcnFree freeFunc, void* address) {
         free(address);
 }
 
-void MemoryManager::AllocateThreadSafe(ulong ptr) {
+void MemoryManager::AllocateThreadSafe(size_t ptr) {
     GlobalVariables::s_pGv->getStandardAllocator()->Allocate(ptr);
 }
 
@@ -69,7 +69,7 @@ static const char* s_InstructionTypeStrings[11] = {"Unknown",
 
 const char* MemoryManager::GetInstructionTypeString(_InstructionType instructionType) const {
     if (instructionType < 11)
-        return s_InstructionTypeStrings[(s32)instructionType];
+        return s_InstructionTypeStrings[(int32_t)instructionType];
     else
         return "UNDEFINED INSTRUCTION TYPE!";
 }

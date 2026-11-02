@@ -49,7 +49,7 @@ void BadEvents::ClearCount(_ID id) {
     field_0[id] = 0;
 }
 
-s32 BadEvents::GetCount(_ID id) const {
+int32_t BadEvents::GetCount(_ID id) const {
     return field_0[id];
 }
 
